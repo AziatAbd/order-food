@@ -2,6 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import styledComponent from "styled-components";
+import Button from "../Button";
 const style = {
   position: "absolute",
   top: "50%",
@@ -21,7 +22,7 @@ export default function BasicModal() {
 
   return (
     <div>
-      <button onClick={handleOpen}>Open modal</button>
+      <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -38,8 +39,8 @@ export default function BasicModal() {
               </PriceAndAmountContainer>
 
               <CounterContainer>
-                <button variant="outlined">-</button>
-                <button variant="outlined">+</button>
+                <Button variant="outlined">-</Button>
+                <Button variant="outlined">+</Button>
               </CounterContainer>
             </Content>
           </Container>
