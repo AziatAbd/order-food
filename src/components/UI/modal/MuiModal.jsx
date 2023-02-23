@@ -1,54 +1,68 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import styledComponent from "styled-components";
 import Button from "../Button";
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 700,
-  bgcolor: "background.paper",
-  boxShadow: 24,
-  p: 2,
-  borderRadius: "14px",
-};
+import AddIcon from "@mui/icons-material/Add";
+import RemoveIcon from "@mui/icons-material/Remove";
+import { styled } from "@mui/system";
+import { useSelector } from "react-redux";
 
-export default function BasicModal() {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+export default function BasicModal({ open, setOpen }) {
+  const { meals } = useSelector((state) => state.meal);
+
   const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
+        <StyledBox>
           <Container>
-            <StyledTilte>Ramen</StyledTilte>
-            <Content>
-              <PriceAndAmountContainer>
-                <StyledPrice>$200</StyledPrice>
-                <AmountStyle> x4</AmountStyle>
-              </PriceAndAmountContainer>
+            {meals.map((item) => (
+              <>
+                <StyledTilte key={item.id}>{item.text}</StyledTilte>
+                <Content>
+                  <PriceAndAmountContainer>
+                    <StyledPrice>{item.price}</StyledPrice>
+                    <AmountStyle> x4</AmountStyle>
+                  </PriceAndAmountContainer>
 
-              <CounterContainer>
-                <Button variant="outlined">-</Button>
-                <Button variant="outlined">+</Button>
-              </CounterContainer>
-            </Content>
+                  <CounterContainer>
+                    <Button>
+                      <RemoveIcon />
+                    </Button>
+                    <Button>
+                      <AddIcon />
+                    </Button>
+                  </CounterContainer>
+                </Content>
+              </>
+            ))}
           </Container>
-        </Box>
+          <Button onClick={handleClose}>Close</Button>
+          <Button>Order</Button>
+        </StyledBox>
       </Modal>
     </div>
   );
 }
+
+const StyledBox = styled(Box)(() => ({
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: "700px",
+  backgroundColor: "#fff",
+  boxShadow: "24px",
+  padding: "20px",
+  borderRadius: "14px",
+}));
+
 const PriceAndAmountContainer = styledComponent.div`
   display: flex;
   align-items: center;
@@ -65,6 +79,14 @@ const Content = styledComponent.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-bottom: 1px solid;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+
+  :last-child {
+    border-bottom: none;
+  }
+  
 `;
 const StyledTilte = styledComponent.p`
   font-weight: 600;
@@ -79,6 +101,9 @@ const Container = styledComponent.div`
   border-bottom: 1px solid black;
   width: 100%;
   margin-bottom: 30px;
+  max-height: 190px;
+  overflow: auto;
+
 `;
 
 const StyledPrice = styledComponent.p`

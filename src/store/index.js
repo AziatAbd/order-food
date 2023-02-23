@@ -1,8 +1,10 @@
-import { combineReducers, createStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { loginSlice } from "./loginSlice";
+import { mealsSlice } from "./meals/mealsSlice";
 
-
-const rootReduser = combineReducers({
-   [loginSlice.name]:loginSlice.reducer 
-})
-export const store = createStore(rootReduser)
+export const store = configureStore({
+  reducer: {
+    [loginSlice.name]: loginSlice.reducer,
+    [mealsSlice.name]: mealsSlice.reducer,
+  },
+});
