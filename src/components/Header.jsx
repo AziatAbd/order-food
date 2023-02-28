@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout'
 import Button from './UI/Button'
@@ -6,12 +6,27 @@ import BasicModal from './UI/modal/MuiModal'
 
 function Header() {
   const [open, setOpen] = useState(false)
+  const [bgColor, setBgColor] = useState(true)
+
+  const changeColor = () => {
+    if (window.scrollY) {
+      setBgColor(false)
+    }
+    if (window.scrollY === 0) {
+      setBgColor(true)
+    }
+    return bgColor
+  }
+  useEffect(() => {
+    changeColor()
+    window.addEventListener('scroll', changeColor)
+  })
 
   const handleOpen = () => setOpen(true)
 
   return (
     <>
-      <Container>
+      <Container bgColor={bgColor}>
         <Logo>OrderFood</Logo>
         <div style={{ marginRight: '4rem' }}>
           <Button onClick={handleOpen}>
@@ -30,7 +45,7 @@ export default Header
 const Container = styled.header`
   width: 100%;
   height: 101px;
-  background-color: #35b8be;
+  background-color: ${(props) => (props.bgColor ? '#35b8be' : '#882323')};
   display: flex;
   justify-content: space-between;
   align-items: center;
