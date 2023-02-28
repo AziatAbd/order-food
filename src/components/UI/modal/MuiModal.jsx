@@ -1,16 +1,16 @@
-import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import styledComponent from "styled-components";
-import Button from "../Button";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-import { styled } from "@mui/system";
-import { useSelector } from "react-redux";
+import Box from '@mui/material/Box'
+import Modal from '@mui/material/Modal'
+import styledComponent from 'styled-components'
+import AddIcon from '@mui/icons-material/Add'
+import RemoveIcon from '@mui/icons-material/Remove'
+import { styled } from '@mui/material'
+import { useSelector } from 'react-redux'
+import Button from '../Button'
 
 export default function BasicModal({ open, setOpen }) {
-  const { meals } = useSelector((state) => state.meal);
+  const { meals } = useSelector((state) => state.meal)
 
-  const handleClose = () => setOpen(false);
+  const handleClose = () => setOpen(false)
 
   return (
     <div>
@@ -48,20 +48,20 @@ export default function BasicModal({ open, setOpen }) {
         </StyledBox>
       </Modal>
     </div>
-  );
+  )
 }
 
 const StyledBox = styled(Box)(() => ({
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "700px",
-  backgroundColor: "#fff",
-  boxShadow: "24px",
-  padding: "20px",
-  borderRadius: "14px",
-}));
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: '700px',
+  backgroundColor: '#fff',
+  boxShadow: '24px',
+  padding: '20px',
+  borderRadius: '14px',
+}))
 
 const PriceAndAmountContainer = styledComponent.div`
   display: flex;
@@ -69,12 +69,12 @@ const PriceAndAmountContainer = styledComponent.div`
   justify-content: space-between;
   width: 153px;
   margin: 0;
-`;
+`
 const CounterContainer = styledComponent.div`
   > button {
     margin-right: 14px;
   }
-`;
+`
 const Content = styledComponent.div`
   display: flex;
   justify-content: space-between;
@@ -87,14 +87,14 @@ const Content = styledComponent.div`
     border-bottom: none;
   }
   
-`;
+`
 const StyledTilte = styledComponent.p`
   font-weight: 600;
   font-size: 20px;
   line-height: 30px;
   color: #222222;
   margin: 0 0 12px;
-`;
+`
 
 const Container = styledComponent.div`
   padding: 24px 0;
@@ -104,7 +104,7 @@ const Container = styledComponent.div`
   max-height: 190px;
   overflow: auto;
 
-`;
+`
 
 const StyledPrice = styledComponent.p`
   margin: 0;
@@ -113,7 +113,7 @@ const StyledPrice = styledComponent.p`
   line-height: 27px;
 
   color: #35b8be
-`;
+`
 const AmountStyle = styledComponent.span`
   border: 1px solid #d6d6d6;
   border-radius: 6px;
@@ -126,4 +126,4 @@ const AmountStyle = styledComponent.span`
 
   color: #222222;
   margin: 0;
-`;
+`

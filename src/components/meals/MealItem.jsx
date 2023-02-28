@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import MealItemForm from "./MealItemForm";
+import React from 'react'
+import styled from 'styled-components'
+import MealItemForm from './MealItemForm'
 
-const MealItem = ({ item }) => {
+function MealItem({ item }) {
   return (
     <StyledLi key={item.id}>
       <StyledInfoCard>
@@ -12,10 +12,10 @@ const MealItem = ({ item }) => {
       </StyledInfoCard>
       <MealItemForm id={item.id} text={item.text} price={item.price} />
     </StyledLi>
-  );
-};
+  )
+}
 
-export default MealItem;
+export default MealItem
 
 const StyledLi = styled.li`
   display: flex;
@@ -26,18 +26,18 @@ const StyledLi = styled.li`
   :last-child {
     border-bottom: none;
   }
-`;
+`
 
 const StyledInfoCard = styled.div`
   margin-bottom: 1.25rem;
-`;
+`
 
 const Title = styled.h4`
   font-weight: 600;
   font-size: 1.125rem;
   line-height: 1.6875rem;
   margin-bottom: 0;
-`;
+`
 
 const Description = styled.p`
   font-style: italic;
@@ -45,11 +45,11 @@ const Description = styled.p`
   font-size: 1rem;
   line-height: 1.5rem;
   margin: 0;
-`;
+`
 
 const Price = styled.span`
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 1.875rem;
   color: #35b8be;
-`;
+`

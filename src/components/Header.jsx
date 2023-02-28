@@ -1,19 +1,19 @@
-import Button from "./UI/Button";
-import React, { useState } from "react";
-import styled from "styled-components";
-import ShoppingCartCheckoutIcon from "@mui/icons-material/ShoppingCartCheckout";
-import BasicModal from "./UI/modal/MuiModal";
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout'
+import Button from './UI/Button'
+import BasicModal from './UI/modal/MuiModal'
 
-const Header = () => {
-  const [open, setOpen] = useState(false);
+function Header() {
+  const [open, setOpen] = useState(false)
 
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => setOpen(true)
 
   return (
     <>
       <Container>
         <Logo>OrderFood</Logo>
-        <div style={{ marginRight: "4rem" }}>
+        <div style={{ marginRight: '4rem' }}>
           <Button onClick={handleOpen}>
             <ShoppingCartCheckoutIcon />
             Your cart
@@ -22,10 +22,10 @@ const Header = () => {
       </Container>
       <BasicModal open={open} setOpen={setOpen} />
     </>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
 
 const Container = styled.header`
   width: 100%;
@@ -39,7 +39,7 @@ const Container = styled.header`
   position: fixed;
   z-index: 1;
   top: 0;
-`;
+`
 
 const Logo = styled.p`
   font-weight: 600;
@@ -48,4 +48,4 @@ const Logo = styled.p`
   color: #ffffff;
   margin: 0;
   margin-left: 5rem;
-`;
+`
