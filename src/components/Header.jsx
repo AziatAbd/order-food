@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import ShoppingCartCheckoutIcon from '@mui/icons-material/ShoppingCartCheckout'
+import { ReactComponent as BurgerMenu } from './UI/burger.svg'
 import Button from './UI/Button'
 import BasicModal from './UI/modal/MuiModal'
 
@@ -28,12 +29,13 @@ function Header() {
     <>
       <Container bgColor={bgColor}>
         <Logo>OrderFood</Logo>
-        <div style={{ marginRight: '4rem' }}>
+        <ButtonContainer style={{ marginRight: '4rem' }}>
           <Button onClick={handleOpen}>
             <ShoppingCartCheckoutIcon />
             Your cart
           </Button>
-        </div>
+        </ButtonContainer>
+        <Burger onClick={handleOpen} />
       </Container>
       <BasicModal open={open} setOpen={setOpen} />
     </>
@@ -41,6 +43,19 @@ function Header() {
 }
 
 export default Header
+const Burger = styled(BurgerMenu)`
+  display: none;
+
+  @media (max-width: 600px) {
+    display: block;
+  }
+`
+
+const ButtonContainer = styled.div`
+  @media (max-width: 600px) {
+    display: none;
+  }
+`
 
 const Container = styled.header`
   width: 100%;
