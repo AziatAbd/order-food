@@ -1,8 +1,8 @@
-import React from "react";
-import { TextField } from "@mui/material";
-import styled from "styled-components";
+import React from 'react'
+import { TextField } from '@mui/material'
+import styled from 'styled-components'
 
-const Input = ({ label, inputType, onChange, value }) => {
+function Input({ label, inputType, onChange, value }) {
   return (
     <InputContainer>
       <TextField
@@ -16,14 +16,14 @@ const Input = ({ label, inputType, onChange, value }) => {
         //   autoComplete="current-password"
       />
     </InputContainer>
-  );
-};
+  )
+}
 
-export default Input;
+export default Input
 
 const InputContainer = styled.div`
   text-align: center;
   /* display: flex;
   flex-direction: column;
   gap: 20px; */
-`;
+`

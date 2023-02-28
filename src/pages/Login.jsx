@@ -1,60 +1,60 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import styled from "styled-components";
-import { loginAction } from "../store/loginSlice";
-import Input from "../components/UI/Input";
-import Button from "../components/UI/Button";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
+import { loginAction } from '../store/loginSlice'
+import Input from '../components/UI/Input'
+import Button from '../components/UI/Button'
 
-const Login = () => {
-  const dispatch = useDispatch();
+function Login() {
+  const dispatch = useDispatch()
 
   const [formState, setFormState] = useState({
-    email: "",
-    password: "",
-  });
+    email: '',
+    password: '',
+  })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const inputChangeHandler = (name) => {
     return (event) => {
       setFormState((prevState) => ({
         ...prevState,
         [name]: event.target.value,
-      }));
-    };
-  };
+      }))
+    }
+  }
 
   const submitHandler = (event) => {
-    event.preventDefault();
-    if (formState.email.includes("@") && formState.password.length > 4) {
-      dispatch(loginAction.login(formState.email));
+    event.preventDefault()
+    if (formState.email.includes('@') && formState.password.length > 4) {
+      dispatch(loginAction.login(formState.email))
     }
-    navigate("/order-food");
-  };
+    navigate('/order-food')
+  }
 
   return (
     <InputContiner>
       <Input
-        inputType={"email"}
-        label={"email"}
-        onChange={inputChangeHandler("email")}
+        inputType="email"
+        label="email"
+        onChange={inputChangeHandler('email')}
         value={formState.email}
       />
       <Input
-        inputType={"password"}
-        label={"password"}
-        onChange={inputChangeHandler("password")}
+        inputType="password"
+        label="password"
+        onChange={inputChangeHandler('password')}
         value={formState.password}
       />
       <ContainerButton>
         <Button onClick={submitHandler}>Login</Button>
       </ContainerButton>
     </InputContiner>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
 
 const InputContiner = styled.div`
   display: grid;
@@ -71,7 +71,7 @@ const InputContiner = styled.div`
   background-color: #c1e9f0;
 
   border: none;
-`;
+`
 const ContainerButton = styled.div`
   margin-left: 60px;
-`;
+`

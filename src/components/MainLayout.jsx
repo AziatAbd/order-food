@@ -1,16 +1,16 @@
-import React from "react";
-import Header from "./Header";
-import Meals from "./meals/Meals";
-import Summary from "./Summary";
+import React from 'react'
+import Header from './Header'
+import Meals from './meals/Meals'
+import Summary from './Summary'
 
-const MainLayout = () => {
+function MainLayout() {
   return (
     <>
       <Header />
       <Summary />
       <Meals />
     </>
-  );
-};
+  )
+}
 
-export default MainLayout;
+export default MainLayout
